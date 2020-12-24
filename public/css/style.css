@@ -1,3 +1,26 @@
 h1 {
   color: red;
 }
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  line-height: 2;
+}
+
+.danger {
+  background-color: red;
+  color: white;
+}
+
+.success {
+  background-color: blue;
+  color: white;
+}
+
+.warning {
+  background-color: yellow;
+  color: black;
+}

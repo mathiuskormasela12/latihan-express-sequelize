@@ -3,6 +3,7 @@
 const express       = require('express');
 const dotenv        = require('dotenv');
 const path          = require('path');
+const db            = require('./app/core/db');
 
 // setup dotenv
 dotenv.config({ path: './.env'});
@@ -24,7 +25,11 @@ app.use(express.static(path.join(__dirname, './public')));
 app.set('views', path.join(__dirname, './app/views'));
 app.set('view engine', 'hbs');
 
+// sync database
+db.sequelize.sync();
+
 app.use('/', require('./app/routes/pages'));
+app.use('/', require('./app/routes/app'));
 
 app.listen(PORT, () => {
   console.log(`Magic happen at http://127.0.0.1:${PORT}`);

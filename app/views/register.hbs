@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>{{ title }}</title>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+
+  {{#if message}}
+    <p class="{{type}}">{{message}}</p>
+  {{/if}}
+
+  <form action="/register" method="post">
+    <ul>
+      <li>
+        <label for="username">
+          Username
+        </label>
+      </li>
+      <li>
+        <input type="text" placeholder="Username...." id="username" name="username">  
+      </li>
+      <li>
+        <label for="password">
+          Password
+        </label>
+      </li>
+      <li>
+        <input type="password" placeholder="Password...." id="password" name="password">
+      </li>
+      <li>
+        <label for="re-password">
+          Repeat Password
+        </label>
+      </li>
+      <li>
+        <input type="password" placeholder="Repeat Password...." id="re-password" name="rePassword">
+      </li>
+      <li>
+        <button type="submit">Register</button>
+      </li>
+    </ul>
+  </form>
+</body>
+</html>

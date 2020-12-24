@@ -1,7 +1,11 @@
 require('dotenv').config();
 
-module.exports = {
+exports.session  = {
   secret: process.env.SECRET,
   saveUninitialized: true,
   resave: true
+};
+
+exports.upload   = { 
+  createParentPath: true 
 };

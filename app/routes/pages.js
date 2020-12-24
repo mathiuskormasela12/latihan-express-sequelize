@@ -3,7 +3,7 @@
 const express           = require('express');
 const session           = require('express-session');
 const cookie            = require('cookie-parser');
-const sessionOpt        = require('../config/sessionOpt');
+const config            = require('../config/configurations');
 
 // import all pages controllers
 const pagesController   = require('../controllers/pagesController');
@@ -12,12 +12,13 @@ const pagesController   = require('../controllers/pagesController');
 const router            = express.Router();
 
 // setup session
-router.use(session(sessionOpt));
+router.use(session(config.session));
 
 // setup cookie
 router.use(cookie());
 
 router.get('/', pagesController.home);
+router.get('/register', pagesController.register);
 
 module.exports          = router;
 

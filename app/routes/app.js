@@ -6,9 +6,11 @@ const config          = require('../config/configurations');
 
 // import all controllers
 const authController  = require('../controllers/authController');
+const appController   = require('../controllers/appController');
 
 // import all middlewares
 const authMiddleware  = require('../middlewares/auth.midleware');
+const appMiddleware   = require('../middlewares/add.middleware');
 
 // init router
 const router          = express.Router();
@@ -18,5 +20,6 @@ router.use(upload(config.upload));
 
 router.post('/register', authMiddleware.register ,authController.register);
 router.post('/login', authMiddleware.login, authController.login);
+router.post('/add', appMiddleware.add, appController.add);
 
 module.exports        = router;

@@ -21,6 +21,7 @@ router.use(cookie());
 router.get('/', middlewares.isLogin, pagesController.home);
 router.get('/register', middlewares.isLogin, pagesController.register);
 router.get('/login', pagesController.login);
+router.get('/add', middlewares.isLogin, pagesController.add);
 
 
 module.exports          = router;

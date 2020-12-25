@@ -33,3 +33,14 @@ exports.login         = (req, res) => {
   res.render('login', props);
   Flasher.removeFlash(req);
 };
+
+exports.add = (req, res) => {
+  const props =  {
+    title: 'Add',
+    message: req.session.message,
+    type: req.session.type
+  };
+  console.log(req.session.message)
+  res.render('add', props);
+  Flasher.removeFlash(req);
+}

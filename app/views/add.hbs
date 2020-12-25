@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>{{ title }}</title>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+
+  {{#if message}}
+    <p class="{{type}}">{{message}}</p>
+  {{/if}}
+
+  <form action="/add" method="post" enctype="multipart/form-data">
+    <ul>
+      <li>
+        <label for="nama">
+          Nama
+        </label>
+      </li>
+      <li>
+        <input type="text" placeholder="Name...." id="nama" name="nama">  
+      </li>
+      <li>
+        <label for="kelas">
+          Kelas
+        </label>
+      </li>
+      <li>
+        <input type="text" placeholder="Kelas...." id="kelas" name="kelas">
+      </li>
+      <li>
+        <label for="jurusan">
+          Jurusan
+        </label>
+      </li>
+      <li>
+        <input type="jurusan" placeholder="Jurusan ...." id="jurusan" name="jurusan">
+      </li>
+      <li>
+        <label for="foto">Foto</label>
+      </li>
+      <li>
+        <input type="file" name="foto" id="foto">
+      </li>
+      <li>
+        <button type="submit">Register</button>
+      </li>
+    </ul>
+  </form>
+</body>
+</html>

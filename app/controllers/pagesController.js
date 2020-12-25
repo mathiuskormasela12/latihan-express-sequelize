@@ -4,7 +4,9 @@ const Flasher       = require('../core/Flasher');
 
 exports.home        = (req, res) => {
   const props = {
-    title: 'Home'
+    title: 'Home',
+    type: req.session.type,
+    message: req.session.message
   };
 
   res.render('index', props);
@@ -20,3 +22,14 @@ exports.register     = (req, res) => {
   res.render('register', props);
   Flasher.removeFlash(req);
 }
+
+exports.login         = (req, res) => {
+  const props = {
+    title: 'Login',
+    message: req.session.message,
+    type: req.session.type
+  };
+
+  res.render('login', props);
+  Flasher.removeFlash(req);
+};

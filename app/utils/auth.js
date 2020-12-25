@@ -12,3 +12,7 @@ exports.isAlNum         = params => {
 }
 
 exports.hashedPassword = async password => await bcrypt.hash(password, 8);
+
+exports.compareHash = async (password, hash = '') => {
+  return bcrypt.compare(password, hash);
+};

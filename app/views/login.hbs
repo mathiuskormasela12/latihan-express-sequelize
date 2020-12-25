@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>{{ title }}</title>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+
+  {{#if message}}
+    <p class="{{type}}">{{message}}</p>
+  {{/if}}
+
+  <form action="/login" method="post">
+    <ul>
+      <li>
+        <label for="username">
+          Username
+        </label>
+      </li>
+      <li>
+        <input type="text" placeholder="Username...." id="username" name="username">  
+      </li>
+      <li>
+        <label for="password">
+          Password
+        </label>
+      </li>
+      <li>
+        <input type="password" placeholder="Password...." id="password" name="password">
+      </li>
+      <li>
+        <label for="remember">
+          <input type="checkbox" value="remember" id="remember" name="remember" />
+          Ingat saya
+        </label>
+      </li>
+      <li>
+        <button type="submit">Login</button>
+      </li>
+    </ul>
+  </form>
+</body>
+</html>

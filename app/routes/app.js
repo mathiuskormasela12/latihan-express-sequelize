@@ -17,5 +17,6 @@ const router          = express.Router();
 router.use(upload(config.upload));
 
 router.post('/register', authMiddleware.register ,authController.register);
+router.post('/login', authMiddleware.login, authController.login);
 
 module.exports        = router;

@@ -3,6 +3,7 @@
 const db              = require('../core/db');
 const authUtil        = require('../utils/auth');
 const Flasher         = require('../core/Flasher');
+const bcrypt          = require('bcryptjs');
 
 exports.register      = async (req, res) => {
   const users = db.user;
@@ -20,5 +21,32 @@ exports.register      = async (req, res) => {
   } catch(err) {
     Flasher.setFlash(req, 'warning', `New user has not been registered`);
     res.status(400).redirect('/register');
+  }
+}
+
+exports.login         = async (req, res) => {
+  const users = db.user;
+  
+  let results = await users.findOne({
+    where: {
+      username: req.body.username
+    }
+  });
+  
+  const compareHash = await authUtil.compareHash(req.body.password, results.password);
+  
+  if(!results || !compareHash) {
+    Flasher.setFlash(req, 'warning', 'Wrong username or Password');
+    res.status(200).redirect('/login');;
+  } else {
+    if(req.body.remember) {
+      res.cookie('login', Math.random().toString(), {
+        maxAge: (1000 * (60 * 2))
+      });
+    }
+
+    req.session.login = true;
+    Flasher.setFlash(req, 'success', 'berhasil login');
+    res.redirect('/');
   }
 }

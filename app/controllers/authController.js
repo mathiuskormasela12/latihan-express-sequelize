@@ -41,7 +41,7 @@ exports.login         = async (req, res) => {
   } else {
     if(req.body.remember) {
       res.cookie('login', Math.random().toString(), {
-        maxAge: (1000 * (60 * 2))
+        maxAge: (1000 * (60 * 30))
       });
     }
 
@@ -49,4 +49,12 @@ exports.login         = async (req, res) => {
     Flasher.setFlash(req, 'success', 'berhasil login');
     res.redirect('/');
   }
+}
+
+exports.logout = (req, res) => {
+  req.session.login = false;
+  res.cookie('login', false, {
+    maxAge: -(1000 * (60 * 30))
+  });
+  res.redirect('/login');
 }

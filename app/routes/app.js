@@ -20,6 +20,7 @@ router.use(upload(config.upload));
 
 router.post('/register', authMiddleware.register ,authController.register);
 router.post('/login', authMiddleware.login, authController.login);
+router.get('/logout', authMiddleware.isLogin, authController.logout)
 router.post('/add', appMiddleware.add, appController.add);
 
 module.exports        = router;

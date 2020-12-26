@@ -12,5 +12,35 @@
   {{#if message}}
     <p class="{{type}}">{{message}}</p>
   {{/if}}
+  <a href="/logout">Logout</a>
+  <table border="1" cellspacing="0" cellpadding="10" width="60%">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Nama</th>
+        <th>Kelas</th>
+        <th>Jurusan</th>
+        <th>Foto</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each data}}
+      <tr>
+        <td>{{no}}</td>
+        <td>{{nama}}</td>
+        <td>{{kelas}}</td>
+        <td>{{jurusan}}</td>
+        <td>
+          <img src="/uploads/{{foto}}" alt="{{foto}}" height="150" width="100" />
+        </td>
+        <td>
+          <a href="/edit/{{id}}">Edit</a>
+          <a href="/delete/{{id}}">Delete</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </body>
 </html>

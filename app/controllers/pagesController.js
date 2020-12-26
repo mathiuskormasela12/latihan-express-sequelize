@@ -1,15 +1,31 @@
 // ===== Pages Controller
 // import all modules
+const db            = require('../core/db');
 const Flasher       = require('../core/Flasher');
 
-exports.home        = (req, res) => {
+exports.home        = async (req, res) => {
+  const student = db.student;
+
   const props = {
     title: 'Home',
     type: req.session.type,
     message: req.session.message
   };
 
+  
+  props.data = await student.findAll();
+  props.data = props.data.map((item, index) => {
+    return {
+      id: item.id,
+      no: index + 1,
+      nama: item.nama,
+      kelas: item.kelas,
+      jurusan: item.jurusan,
+      foto: item.foto
+    };
+  });
   res.render('index', props);
+  Flasher.removeFlash(req);
 };
 
 exports.register     = (req, res) => {
